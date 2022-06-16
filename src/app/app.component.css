@@ -1,0 +1,40 @@
+.container{
+  width: 40rem;
+  height: 40rem;
+  margin-top: 5rem;
+  margin-left: 25rem;
+  border-width: 2px;
+  border-color: black;
+  border-radius: 5px;
+  border-style: solid;
+  display: block;
+  align-content: center;
+}
+
+.from,.to{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: repeat(1, 1fr);
+}
+
+.result{
+border-style: solid;
+border-color: black;
+border-width: 0.2px;
+height: 2.25rem;
+}
+
+.inputs{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+input{
+  height: 2rem;
+  margin-top: 1.2rem;
+}
+footer{
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
