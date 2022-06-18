@@ -1,10 +1,16 @@
 <div class="container">
-  <h1>{{title}}</h1>
+  <div class="title">
+    <h1>{{title}}</h1>
+  </div>
+
   <div class="inputs">
     <div class="from">
-      <label for="">Numero</label>
-      <input type="text" (ngModelChange)="sendToConvert($event)"
-      #nameInput="ngModel" [(ngModel)]="input">
+      <h4>
+      Numero
+      </h4>
+        <input type="text"[ngStyle]="{'color':checkIncorrectNumber()?'black':'red'}"
+        (ngModelChange)="sendToConvert($event)"
+        #nameInput="ngModel" [(ngModel)]="input"/>
       <select (change)="changeBase($event)" size="7">
         <option [value]="item" *ngFor="let item of bases">
           Base : {{item}}</option>
@@ -12,11 +18,12 @@
     </div>
 
     <div class="to">
-      <label for="">Resultado</label>
+
+      <h4>
+        Resultado
+      </h4>
       <div class="result">
-        <label for="" >
-          {{number}}
-        </label>
+        {{number}}
       </div>
       <select (change)="changeBaseConvert($event)" size="7">
         <option [value]="item" *ngFor="let item of bases">
@@ -24,10 +31,10 @@
       </select>
     </div>
   </div>
-  <footer>
-    <button (click)="clear()">CLEAR</button>
-  </footer>
-  <h2>Resultado : {{number}}</h2>
+  <div class="button">
+    <button (click)="clear()">Resetear Valores</button>
+  </div>
+  <h3>Resultado : {{result}}</h3>
 </div>
 
 <router-outlet></router-outlet>

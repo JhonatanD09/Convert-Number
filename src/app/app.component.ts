@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {convert, bases} from '../models/convert'
+import {convert, bases, valideInput} from '../models/convert'
 
 
 @Component({
@@ -8,18 +8,39 @@ import {convert, bases} from '../models/convert'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'convert-number';
+
+  title = 'CONVERSOR NUMERICO';
 
   number = ''
+  result = ''
   input = ''
   base = 2
   baseConvert = 2
 
+
   bases = bases()
+
+
+  checkIncorrectNumber(): boolean {
+    return valideInput(this.input,this.base);
+  }
 
   sendToConvert = (event:string) =>{
     this.input = event
-    this.number =convert(this.input.toUpperCase(),this.base, this.baseConvert)
+    if(this.input == ''){
+      alert(`No ingresaste un numero a convertir`)
+      this.number = ''
+      this.result = ''
+    }
+    if(this.checkIncorrectNumber()){
+      this.number =convert(this.input.toUpperCase(),this.base, this.baseConvert)
+      this.result = `${this.input}(${this.base}) equivale a ${this.number}(${this.baseConvert}) `
+    }else{
+      alert(`El numero ${this.input} no esta en base ${this.base}`)
+      this.number = ''
+      this.result = ''
+    }
+
   }
 
   changeBase(event:Event){
@@ -36,9 +57,10 @@ export class AppComponent {
 
   clear(){
     this.input = ''
-    this.base = 0
-    this.baseConvert= 0
+    this.base = 2
+    this.baseConvert= 2
     this.number= ''
+    this.result= ''
   }
 
 

@@ -56,5 +56,18 @@ export const  bases = () =>{
   return bases
 }
 
+export const valideInput = (input:string, base:number) =>{
+  let baseConvert = Number(base.toString())
+  let inputs = input.split("")
+  let isValid = true
+  for(let i in inputs){
+    let inputConvert = valideNumberOrLetter(inputs[i])
+    if(baseConvert!=null && inputConvert!=null&& inputConvert>= baseConvert ){
+      isValid= false
+    }
+  }
+  return isValid
+}
+
 
 
