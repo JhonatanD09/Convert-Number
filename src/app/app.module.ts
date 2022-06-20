@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { NgxToastNotifierModule } from 'ngx-toast-notifier';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    NgxToastNotifierModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

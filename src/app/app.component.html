@@ -1,17 +1,16 @@
 <div class="container">
   <div class="title">
     <h1>{{title}}</h1>
-  </div>
-
-  <div class="inputs">
-    <div class="from">
-      <h4>
-      Numero
-      </h4>
-        <input type="text"[ngStyle]="{'color':checkIncorrectNumber()?'black':'red'}"
+    <div class="inputs">
+      <div class="from">
+        <h4>
+          Numero
+        </h4>
+        <input type="text"[ngStyle]="{'color':checkIncorrectNumber(input.toUpperCase())?'black':'red'}"
         (ngModelChange)="sendToConvert($event)"
         #nameInput="ngModel" [(ngModel)]="input"/>
-      <select (change)="changeBase($event)" size="7">
+        <ngx-toast-notifier></ngx-toast-notifier>
+        <select (change)="changeBase($event)" size="7">
         <option [value]="item" *ngFor="let item of bases">
           Base : {{item}}</option>
       </select>

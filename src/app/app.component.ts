@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {convert, bases, valideInput} from '../models/convert'
-
+import { NgxToastService } from 'ngx-toast-notifier';
 
 @Component({
   selector: 'app-root',
@@ -10,33 +10,31 @@ import {convert, bases, valideInput} from '../models/convert'
 export class AppComponent {
 
   title = 'CONVERSOR NUMERICO';
-
   number = ''
   result = ''
   input = ''
   base = 2
   baseConvert = 2
-
-
   bases = bases()
 
+  constructor(private ngxToastService: NgxToastService) {}
 
-  checkIncorrectNumber(): boolean {
-    return valideInput(this.input,this.base);
+  checkIncorrectNumber(input:string): boolean {
+    return valideInput(input,this.base);
   }
 
   sendToConvert = (event:string) =>{
     this.input = event
     if(this.input == ''){
-      alert(`No ingresaste un numero a convertir`)
+      this.addWarning()
       this.number = ''
       this.result = ''
     }
-    if(this.checkIncorrectNumber()){
+    if(this.checkIncorrectNumber(this.input.toUpperCase())){
       this.number =convert(this.input.toUpperCase(),this.base, this.baseConvert)
       this.result = `${this.input}(${this.base}) equivale a ${this.number}(${this.baseConvert}) `
     }else{
-      alert(`El numero ${this.input} no esta en base ${this.base}`)
+      this.addDanger(`El numero ${this.input} no esta en base ${this.base}`)
       this.number = ''
       this.result = ''
     }
@@ -63,5 +61,12 @@ export class AppComponent {
     this.result= ''
   }
 
+  addWarning():void{
+    this.ngxToastService.onWarning('Advertencia','No ingresaste un numero a convertir')
+  }
+
+  addDanger(danger:string):void{
+    this.ngxToastService.onDanger('Error',danger)
+  }
 
 }
