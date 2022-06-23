@@ -13,12 +13,12 @@ const toOtherBase = (base10:number, base:number)=>{
   return convertToNumber(result)
 }
 
-const toOtherBaseRecursive = (base10:number, base:number, result: number[]) =>{
-    if(base10>=base){
-      result.push(base10-(base*Math.trunc(base10/base)))
-      toOtherBaseRecursive(Math.trunc(base10/base),base,result)
+const toOtherBaseRecursive = (divisor:number, base:number, result: number[]) =>{
+    if(divisor>=base){
+      result.push(divisor-(base*Math.trunc(divisor/base)))
+      toOtherBaseRecursive(Math.trunc(divisor/base),base,result)
     }else{
-      result.push(base10)
+      result.push(divisor)
     }
 }
 
@@ -57,12 +57,11 @@ export const  bases = () =>{
 }
 // validar que el numero este en la base
 export const valideInput = (input:string, base:number) =>{
-  let baseConvert = Number(base.toString())
   let inputs = input.split("")
   let isValid = true
   for(let i in inputs){
     let inputConvert = valideNumberOrLetter(inputs[i])
-    if(baseConvert!=null && inputConvert!=null&& inputConvert>= baseConvert ){
+    if(inputConvert!=null&& inputConvert>= base ){
       isValid= false
     }
   }
