@@ -55,7 +55,7 @@ export const  bases = () =>{
   }
   return bases
 }
-
+// validar que el numero este en la base
 export const valideInput = (input:string, base:number) =>{
   let baseConvert = Number(base.toString())
   let inputs = input.split("")

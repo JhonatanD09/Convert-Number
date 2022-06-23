@@ -1,6 +1,6 @@
 export const letter = {
   "letters" : [
-   {letter:"A", value: 10},
+   {letter:"A", value : 10},
    {letter:"B", value : 11},
    {letter:"C", value : 12},
    {letter:"D", value : 13},
